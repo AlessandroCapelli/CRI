@@ -1,0 +1,16 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Sedi</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<div>
+		<a href="/sede/readAll"><h2>Sedi</h2></a>
+		<h2>Lista Sedi Trovate</h2>
+		<ul th:each="sede : ${sedi}">
+			<li><a th:href="@{/sede/read/{id}(id = ${sede.id})}" th:text="${sede.nome + ' ' + sede.citta}"></a></li>
+		</ul>
+	</div>
+</body>
+</html>

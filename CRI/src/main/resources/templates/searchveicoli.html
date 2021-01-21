@@ -1,0 +1,16 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Veicoli</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<div>
+		<a href="/veicolo/readAll"><h2>Veicoli</h2></a>
+		<h2>Lista Veicoli Trovati</h2>
+		<ul th:each="veicolo : ${veicoli}">
+			<li><a th:href="@{/veicolo/read/{id}(id = ${veicolo.id})}" th:text="${veicolo.targa + ' (' + veicolo.numeroPosti} + ')'"></a></li>
+		</ul>
+	</div>
+</body>
+</html>

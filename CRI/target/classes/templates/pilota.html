@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Pilota</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<div>
+		<a href="/pilota/readAll"><h2>Piloti</h2></a>
+		<h2>Dettagli Pilota</h2>
+		<p th:text="${pilota.id + ' ' + pilota.nome + ' ' + pilota.cognome + ' ' + pilota.patente}"></p>
+		<form th:action="@{/pilota/update}" th:object="${pilota}" method="post">
+			<table>
+				<tr>
+		    		<td><h2>Modifica Pilota</h2></td>
+		    	</tr>
+		    	<tr>
+		    		<td><input th:value="${pilota.id}" name="id" type="hidden"/></td>
+		    	<tr>
+		    	</tr>
+		    		<td><label>Nome:</label></td><td><input th:value="${nome}" name="nome" type="text" required/></td>
+		    	</tr>
+		    	<tr>
+		    		<td><label>Cognome:</label></td><td><input th:value="${cognome}" name="cognome" type="text" required/></td>
+		    	</tr>
+		    	<tr>
+		    		<td><label>Patente:</label></td><td><input th:value="${patente}" name="patente" type="text" required/></td>
+		    	</tr>
+		    </table>
+		    <input type="submit" value="Modifica"/>
+	  	</form>
+	</div>
+</body>
+</html>

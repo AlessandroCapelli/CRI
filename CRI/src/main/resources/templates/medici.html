@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Medici</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<div>
+		<a href="/"><h2>Entit&agrave;</h2></a>
+		<h2>Lista Medici</h2>
+		<ul th:each="medico : ${medici}">
+			<li>[<a th:href="@{/medico/delete/{id}(id=${medico.id})}">Elimina</a>] <a th:href="@{/medico/read/{id}(id = ${medico.id})}" th:text="${medico.nome + ' ' + medico.cognome + ' ' + medico.specializzazione}"></a></li>
+		</ul>
+		<form th:action="@{/medico/create}" th:object="${medico}" method="post">
+			<table>
+				<tr>
+		    		<td><h2>Aggiungi Medico</h2></td>
+		    	</tr>
+		    	<tr>
+		    		<td><label>Nome:</label></td><td><input th:value="${nome}" name="nome" type="text" required/></td>
+		    	</tr>
+		    	<tr>
+		    		<td><label>Cognome:</label></td><td><input th:value="${cognome}" name="cognome" type="text" required/></td>
+		    	</tr>
+		    	<tr>
+		    		<td><label>Specializzazione:</label></td><td><input th:value="${specializzazione}" name="specializzazione" type="text" required/></td>
+		    	</tr>
+		    </table>
+		    <input type="submit" value="Aggiungi"/>
+	  	</form>
+	  	<h2>Cerca Medici</h2>
+	  	<form th:action="@{/medico/search/nome}" th:object="${nome}" method="get">
+			<table>
+		    	<tr>
+		    		<td><label>Nome:</label></td><td><input th:value="${nome}" name="nome" type="text" required/></td><td><input type="submit" value="Cerca per nome"/></td>
+		    	</tr>
+		    </table>
+	  	</form>
+	  	<form th:action="@{/medico/search/cognome}" th:object="${cognome}" method="get">
+			<table>
+		    	<tr>
+		    		<td><label>Cognome:</label></td><td><input th:value="${cognome}" name="cognome" type="text" required/></td><td><input type="submit" value="Cerca per cognome"/></td>
+		    	</tr>
+		    </table>
+	  	</form>
+	  	<form th:action="@{/medico/search/specializzazione}" th:object="${specializzazione}" method="get">
+			<table>
+		    	<tr>
+		    		<td><label>Specializzazione:</label></td><td><input th:value="${specializzazione}" name="specializzazione" type="text" required/></td><td><input type="submit" value="Cerca per specializzazione"/></td>
+		    	</tr>
+		    </table>
+	  	</form>
+	</div>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Soccorritore</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<div>
+		<a href="/soccorritore/readAll"><h2>Soccorritori</h2></a>
+		<h2>Dettagli Soccorritore</h2>
+		<p th:text="${soccorritore.id + ' ' + soccorritore.nome + ' ' + soccorritore.cognome + ' ' + soccorritore.ruolo}"></p>
+		<form th:action="@{/soccorritore/update}" th:object="${soccorritore}" method="post">
+			<table>
+				<tr>
+		    		<td><h2>Modifica Soccorritore</h2></td>
+		    	</tr>
+		    	<tr>
+		    		<td><input th:value="${soccorritore.id}" name="id" type="hidden"/></td>
+		    	<tr>
+		    	</tr>
+		    		<td><label>Nome:</label></td><td><input th:value="${nome}" name="nome" type="text" required/></td>
+		    	</tr>
+		    	<tr>
+		    		<td><label>Cognome:</label></td><td><input th:value="${cognome}" name="cognome" type="text" required/></td>
+		    	</tr>
+		    	<tr>
+		    		<td><label>Ruolo:</label></td><td><input th:value="${ruolo}" name="ruolo" type="text" required/></td>
+		    	</tr>
+		    </table>
+		    <input type="submit" value="Modifica"/>
+	  	</form>
+	</div>
+</body>
+</html>

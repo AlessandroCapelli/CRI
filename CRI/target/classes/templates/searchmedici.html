@@ -1,0 +1,16 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Medici</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<div>
+		<a href="/medico/readAll"><h2>Medici</h2></a>
+		<h2>Lista Medici Trovati</h2>
+		<ul th:each="medico : ${medici}">
+			<li><a th:href="@{/medico/read/{id}(id = ${medico.id})}" th:text="${medico.nome + ' ' + medico.cognome}"></a></li>
+		</ul>
+	</div>
+</body>
+</html>

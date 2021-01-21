@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Turni</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<div>
+		<a href="/"><h2>Relazioni</h2></a>
+		<h2>Lista Persone con i rispettivi Turni</h2>
+		<ul th:each="persona : ${persone}">
+			<li><a th:href="@{/persona/read/{id}(id = ${persona.id})}" th:text="${persona.nome + ' ' + persona.cognome + ': [' + persona.sedi + ']'}"></a></li>
+		</ul>
+		<form th:action="@{/persona/create/turno}" th:object="${persona}" method="post">
+			<table>
+				<tr>
+		    		<td><h2>Aggiungi Turno</h2></td>
+		    	</tr>
+		    	<tr>
+		    		<td><label>ID persona:</label></td><td><input th:value="${id_persona}" name="id_persona" type="text" required/></td>
+		    	</tr>
+		    	<tr>
+		    		<td><label>ID sede:</label></td><td><input th:value="${id_sede}" name="id_sede" type="text" required/></td>
+		    	</tr>
+		    </table>
+		    <input type="submit" value="Aggiungi"/>
+	  	</form>
+	  	<form th:action="@{/persona/delete/turno}" th:object="${persona}" method="post">
+			<table>
+				<tr>
+		    		<td><h2>Rimuovi Turno</h2></td>
+		    	</tr>
+		    	<tr>
+		    		<td><label>ID persona:</label></td><td><input th:value="${id_persona}" name="id_persona" type="text" required/></td>
+		    	</tr>
+		    	<tr>
+		    		<td><label>ID sede:</label></td><td><input th:value="${id_sede}" name="id_sede" type="text" required/></td>
+		    	</tr>
+		    </table>
+		    <input type="submit" value="Rimuovi"/>
+	  	</form>
+	</div>
+</body>
+</html>

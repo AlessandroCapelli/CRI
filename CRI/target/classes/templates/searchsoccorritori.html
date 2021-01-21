@@ -1,0 +1,16 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Soccorritori</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<div>
+		<a href="/soccorritore/readAll"><h2>Soccorritori</h2></a>
+		<h2>Lista Soccorritori Trovati</h2>
+		<ul th:each="soccorritore : ${soccorritori}">
+			<li><a th:href="@{/soccorritore/read/{id}(id = ${soccorritore.id})}" th:text="${soccorritore.nome + ' ' + soccorritore.cognome + ' ' + soccorritore.ruolo}"></a></li>
+		</ul>
+	</div>
+</body>
+</html>

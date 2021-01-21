@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Soccorritori</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<div>
+		<a href="/"><h2>Entit&agrave;</h2></a>
+		<h2>Lista Soccorritori</h2>
+		<ul th:each="soccorritore : ${soccorritori}">
+			<li>[<a th:href="@{/soccorritore/delete/{id}(id=${soccorritore.id})}">Elimina</a>] <a th:href="@{/soccorritore/read/{id}(id = ${soccorritore.id})}" th:text="${soccorritore.nome + ' ' + soccorritore.cognome + ' ' + soccorritore.ruolo}"></a></li>
+		</ul>
+		<form th:action="@{/soccorritore/create}" th:object="${soccorritore}" method="post">
+			<table>
+				<tr>
+		    		<td><h2>Aggiungi Soccorritore</h2></td>
+		    	</tr>
+		    	<tr>
+		    		<td><label>Nome:</label></td><td><input th:value="${nome}" name="nome" type="text" required/></td>
+		    	</tr>
+		    	<tr>
+		    		<td><label>Cognome:</label></td><td><input th:value="${cognome}" name="cognome" type="text" required/></td>
+		    	</tr>
+		    	<tr>
+		    		<td><label>Ruolo:</label></td><td><input th:value="${ruolo}" name="ruolo" type="text" required/></td>
+		    	</tr>
+		    </table>
+		    <input type="submit" value="Aggiungi"/>
+	  	</form>
+	  	<h2>Cerca Soccorritore</h2>
+	  	<form th:action="@{/soccorritore/search/nome}" th:object="${nome}" method="get">
+			<table>
+		    	<tr>
+		    		<td><label>Nome:</label></td><td><input th:value="${nome}" name="nome" type="text" required/></td><td><input type="submit" value="Cerca per nome"/></td>
+		    	</tr>
+		    </table>
+	  	</form>
+	  	<form th:action="@{/soccorritore/search/cognome}" th:object="${cognome}" method="get">
+			<table>
+		    	<tr>
+		    		<td><label>Cognome:</label></td><td><input th:value="${cognome}" name="cognome" type="text" required/></td><td><input type="submit" value="Cerca per cognome"/></td>
+		    	</tr>
+		    </table>
+	  	</form>
+	  	<form th:action="@{/soccorritore/search/ruolo}" th:object="${ruolo}" method="get">
+			<table>
+		    	<tr>
+		    		<td><label>Ruolo:</label></td><td><input th:value="${ruolo}" name="ruolo" type="text" required/></td><td><input type="submit" value="Cerca per ruolo"/></td>
+		    	</tr>
+		    </table>
+	  	</form>
+	</div>
+</body>
+</html>

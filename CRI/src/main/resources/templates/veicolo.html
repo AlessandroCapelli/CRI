@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Veicolo</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<div>
+		<a href="/veicolo/readAll"><h2>Veicoli</h2></a>
+		<h2>Dettagli Veicolo</h2>
+		<p th:text="${veicolo.id + ' ' + veicolo.targa + ' (' + veicolo.numeroPosti + ')'}"></p>
+		<form th:action="@{/veicolo/update}" th:object="${veicolo}" method="post">
+			<table>
+				<tr>
+		    		<td><h2>Modifica Veicolo</h2></td>
+		    	</tr>
+		    	<tr>
+		    		<td><input th:value="${veicolo.id}" name="id" type="hidden"/></td>
+		    	<tr>
+		    	</tr>
+		    		<td><label>Targa:</label></td><td><input th:value="${targa}" name="targa" type="text" required/></td>
+		    	</tr>
+		    	<tr>
+		    		<td><label>Numero posti:</label></td><td><input th:value="${numeroPosti}" name="numeroPosti" type="text" required/></td>
+		    	</tr>
+		    </table>
+		    <input type="submit" value="Modifica"/>
+	  	</form>
+	</div>
+</body>
+</html>

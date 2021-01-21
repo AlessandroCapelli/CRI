@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Mezzi</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<div>
+		<a href="/"><h2>Relazioni</h2></a>
+		<h2>Lista Veicoli con le rispettive Sedi</h2>
+		<ul th:each="veicolo : ${veicoli}">
+			<div th:switch="${veicolo.sede}">
+				<li th:case="null"><a th:href="@{/veicolo/read/{id}(id = ${veicolo.id})}" th:text="${veicolo.targa}"></a></li>
+				<li th:case="*"><a th:href="@{/veicolo/read/{id}(id = ${veicolo.id})}" th:text="${veicolo.targa + ': ' + veicolo.sede}"></a> [<a th:href="@{/veicolo/delete/mezzo/{id}(id=${veicolo.id})}">Elimina</a>]</li>
+			</div>
+		</ul>
+		<form th:action="@{/veicolo/create/mezzo}" th:object="${veicolo}" method="post">
+			<table>
+				<tr>
+		    		<td><h2>Aggiungi Mezzo</h2></td>
+		    	</tr>
+		    	<tr>
+		    		<td><label>ID veicolo:</label></td><td><input th:value="${id_veicolo}" name="id_veicolo" type="text" required/></td>
+		    	</tr>
+		    	<tr>
+		    		<td><label>ID sede:</label></td><td><input th:value="${id_sede}" name="id_sede" type="text" required/></td>
+		    	</tr>
+		    </table>
+		    <input type="submit" value="Aggiungi"/>
+	  	</form>
+	</div>
+</body>
+</html>

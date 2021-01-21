@@ -1,0 +1,16 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Piloti</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<div>
+		<a href="/pilota/readAll"><h2>Piloti</h2></a>
+		<h2>Lista Piloti Trovati</h2>
+		<ul th:each="pilota : ${piloti}">
+			<li><a th:href="@{/pilota/read/{id}(id = ${pilota.id})}" th:text="${pilota.nome + ' ' + pilota.cognome + ' ' + pilota.patente}"></a></li>
+		</ul>
+	</div>
+</body>
+</html>

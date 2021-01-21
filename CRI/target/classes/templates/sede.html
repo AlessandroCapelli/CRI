@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Sede</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<div>
+		<a href="/sede/readAll"><h2>Sedi</h2></a>
+		<h2>Dettagli Sede</h2>
+		<p th:text="${sede.id + ' ' + sede.nome + ' ' + sede.citta}"></p>
+		<form th:action="@{/sede/update}" th:object="${sede}" method="post">
+			<table>
+				<tr>
+		    		<td><h2>Modifica Sede</h2></td>
+		    	</tr>
+		    	<tr>
+		    		<td><input th:value="${sede.id}" name="id" type="hidden"/></td>
+		    	<tr>
+		    	</tr>
+		    		<td><label>Nome:</label></td><td><input th:value="${nome}" name="nome" type="text" required/></td>
+		    	</tr>
+		    	<tr>
+		    		<td><label>Citt&agrave;:</label></td><td><input th:value="${citta}" name="citta" type="text" required/></td>
+		    	</tr>
+		    </table>
+		    <input type="submit" value="Modifica"/>
+	  	</form>
+	</div>
+</body>
+</html>

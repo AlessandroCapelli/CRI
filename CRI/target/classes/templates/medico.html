@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Medico</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<div>
+		<a href="/medico/readAll"><h2>Medici</h2></a>
+		<h2>Dettagli Medico</h2>
+		<p th:text="${medico.id + ' ' + medico.nome + ' ' + medico.cognome + ' ' + medico.specializzazione}"></p>
+		<form th:action="@{/medico/update}" th:object="${medico}" method="post">
+			<table>
+				<tr>
+		    		<td><h2>Modifica Medico</h2></td>
+		    	</tr>
+		    	<tr>
+		    		<td><input th:value="${medico.id}" name="id" type="hidden"/></td>
+		    	<tr>
+		    	</tr>
+		    		<td><label>Nome:</label></td><td><input th:value="${nome}" name="nome" type="text" required/></td>
+		    	</tr>
+		    	<tr>
+		    		<td><label>Cognome:</label></td><td><input th:value="${cognome}" name="cognome" type="text" required/></td>
+		    	</tr>
+		    	<tr>
+		    		<td><label>Specializzazione:</label></td><td><input th:value="${specializzazione}" name="specializzazione" type="text" required/></td>
+		    	</tr>
+		    </table>
+		    <input type="submit" value="Modifica"/>
+	  	</form>
+	</div>
+</body>
+</html>

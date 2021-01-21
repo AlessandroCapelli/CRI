@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Responsabili</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<div>
+		<a href="/"><h2>Relazioni</h2></a>
+		<h2>Lista Persone con i rispettivi Responsabili</h2>
+		<ul th:each="persona : ${persone}">
+			<div th:switch="${persona.responsabile}">
+		  		<li th:case="null"><a th:href="@{/persona/read/{id}(id = ${persona.id})}" th:text="${persona.nome + ' ' + persona.cognome}"></a></li>
+		  		<li th:case="*"><a th:href="@{/persona/read/{id}(id = ${persona.id})}" th:text="${persona.nome + ' ' + persona.cognome + ': ' + persona.responsabile}"></a> [<a th:href="@{/persona/delete/responsabile/{id}(id=${persona.id})}">Elimina</a>]</li>
+			</div>
+		</ul>
+		<form th:action="@{/persona/create/responsabile}" th:object="${persona}" method="post">
+			<table>
+				<tr>
+		    		<td><h2>Aggiungi Responsabile</h2></td>
+		    	</tr>
+		    	<tr>
+		    		<td><label>ID responsabile:</label></td><td><input th:value="${id_responsabile}" name="id_responsabile" type="text" required/></td>
+		    	</tr>
+		    	<tr>
+		    		<td><label>ID subordinato:</label></td><td><input th:value="${id_subordinato}" name="id_subordinato" type="text" required/></td>
+		    	</tr>
+		    </table>
+		    <input type="submit" value="Aggiungi"/>
+	  	</form>
+	</div>
+</body>
+</html>

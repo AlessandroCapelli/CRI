@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Persone</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<div>
+		<a href="/"><h2>Entit&agrave;</h2></a>
+		<h2>Lista Persone</h2>
+		<ul th:each="persona : ${persone}">
+			<li>[<a th:href="@{/persona/delete/{id}(id=${persona.id})}">Elimina</a>] <a th:href="@{/persona/read/{id}(id = ${persona.id})}" th:text="${persona.nome + ' ' + persona.cognome}"></a></li>
+		</ul>
+		<form th:action="@{/persona/create}" th:object="${persona}" method="post">
+			<table>
+				<tr>
+		    		<td><h2>Aggiungi Persona</h2></td>
+		    	</tr>
+		    	<tr>
+		    		<td><label>Nome:</label></td><td><input th:value="${nome}" name="nome" type="text" required/></td>
+		    	</tr>
+		    	<tr>
+		    		<td><label>Cognome:</label></td><td><input th:value="${cognome}" name="cognome" type="text" required/></td>
+		    	</tr>
+		    </table>
+		    <input type="submit" value="Aggiungi"/>
+	  	</form>
+	  	<h2>Cerca Persone</h2>
+	  	<form th:action="@{/persona/search/nome}" th:object="${nome}" method="get">
+			<table>
+		    	<tr>
+		    		<td><label>Nome:</label></td><td><input th:value="${nome}" name="nome" type="text" required/></td><td><input type="submit" value="Cerca per nome"/></td>
+		    	</tr>
+		    </table>
+	  	</form>
+	  	<form th:action="@{/persona/search/cognome}" th:object="${cognome}" method="get">
+			<table>
+		    	<tr>
+		    		<td><label>Cognome:</label></td><td><input th:value="${cognome}" name="cognome" type="text" required/></td><td><input type="submit" value="Cerca per cognome"/></td>
+		    	</tr>
+		    </table>
+	  	</form>
+	</div>
+</body>
+</html>

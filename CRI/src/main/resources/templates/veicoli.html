@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Veicoli</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<div>
+		<a href="/"><h2>Entit&agrave;</h2></a>
+		<h2>Lista Veicoli</h2>
+		<ul th:each="veicolo : ${veicoli}">
+			<li>[<a th:href="@{/veicolo/delete/{id}(id=${veicolo.id})}">Elimina</a>] <a th:href="@{/veicolo/read/{id}(id = ${veicolo.id})}" th:text="${veicolo.targa} + ' (' + ${veicolo.numeroPosti} + ')'"></a></li>
+		</ul>
+		<form th:action="@{/veicolo/create}" th:object="${veicolo}" method="post">
+			<table>
+				<tr>
+		    		<td><h2>Aggiungi Veicolo</h2></td>
+		    	</tr>
+		    	<tr>
+		    		<td><label>Targa:</label></td><td><input th:value="${targa}" name="targa" type="text" required/></td>
+		    	</tr>
+		    	<tr>
+		    		<td><label>Numero posti:</label></td><td><input th:value="${numeroPosti}" name="numeroPosti" type="text" required/></td>
+		    	</tr>
+		    </table>
+		    <input type="submit" value="Aggiungi"/>
+	  	</form>
+	  	<h2>Cerca Veicoli</h2>
+	  	<form th:action="@{/veicolo/search/targa}" th:object="${targa}" method="get">
+			<table>
+		    	<tr>
+		    		<td><label>Targa:</label></td><td><input th:value="${targa}" name="targa" type="text" required/></td><td><input type="submit" value="Cerca per targa"/></td>
+		    	</tr>
+		    </table>
+	  	</form>
+	</div>
+</body>
+</html>
